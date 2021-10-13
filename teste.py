@@ -1,4 +1,4 @@
 import requests
 
-response = requests.get("https://api.github.com/repos/v2ray/v2ray-core/releases/latest")
+response = requests.get("https://api.github.com/repos/pedro554/funeraria")
 print(response.json())
