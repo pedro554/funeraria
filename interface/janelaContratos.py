@@ -2,6 +2,7 @@ def contratos(banco, cursor, path):
     import PySimpleGUI as sg
     from modulos import colunasTabelaBanco
     from PIL import Image
+    from modulos import excluirContrato
 
     colunas = colunasTabelaBanco.colunas(cursor, 'CONTRATOS')
     contratos = []
@@ -83,3 +84,7 @@ def contratos(banco, cursor, path):
 
             contrato_temp = Image.open(f"{path}\\temp.png")
             contrato_temp.show()
+
+        if event == '-EXCLUIR-':
+            contratos =  excluirContrato.excluir(banco, cursor, contratos, values.get('-TABELA_CONTRATOS-'))
+            janelaContratos['-TABELA_CONTRATOS-'].Update(contratos)
