@@ -2,7 +2,7 @@ def contratos(banco, cursor, path):
     import PySimpleGUI as sg
     from modulos import colunasTabelaBanco
     from PIL import Image
-    from modulos import excluirContrato
+    from modulos import excluirContrato, alterarContrato
 
     colunas = colunasTabelaBanco.colunas(cursor, 'CONTRATOS')
     contratos = []
@@ -30,7 +30,7 @@ def contratos(banco, cursor, path):
         ]
     ]
     frame_bottom = [
-            [sg.Combo(colunas, key='-PESQUISAR_POR_COLUNA-', readonly=True)],
+            [sg.Combo(colunas, key='-PESQUISAR_POR_COLUNA-', readonly=True, default_value=colunas[1])],
             [
                 sg.Input(key='-CLIENTE-', size=(36,1)), sg.Button('Pesquisar', key='-PESQUISAR-'),
                 sg.Checkbox('Todos', key='-PESQUISAR_TODOS-', background_color="#aaa"),
@@ -88,3 +88,8 @@ def contratos(banco, cursor, path):
         if event == '-EXCLUIR-':
             contratos =  excluirContrato.excluir(banco, cursor, contratos, values.get('-TABELA_CONTRATOS-'))
             janelaContratos['-TABELA_CONTRATOS-'].Update(contratos)
+
+        if event == '-ALTERAR-':
+            indice = values.get('-TABELA_CONTRATOS-')
+            alterarContrato.alterar(banco, cursor, contratos, indice)
+            

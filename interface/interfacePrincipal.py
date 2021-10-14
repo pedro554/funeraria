@@ -1,4 +1,5 @@
 import PySimpleGUI as sg
+from PySimpleGUI.PySimpleGUI import T
 from interface import janelaClientes, janelaFornecedores, janelaEstoque, janelaContratos
 from modulos import finalizarVenda, parcelarVenda, alteracoesVenda, alterarValorProduto
 
@@ -48,7 +49,7 @@ def Inicio(banco, cursor, path):
     janelaPrincipal.maximize()
     total_itens = 0
     total_venda = 0
-    
+    menuAtivo = True
     while True:
         event, values = janelaPrincipal.read()
         #janelaPrincipal.bind('<Key-F1>', 'F1')

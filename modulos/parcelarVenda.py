@@ -111,7 +111,7 @@ def parcelar(banco, cursor, totalVenda, produtos, path):
                 n_parcelas = int(values.get('-QTDE_PARCELAS-'))
                 for i in range(0, n_parcelas):
                     d = date.fromordinal(a + intervalo_parcelas)
-                    dateList.append((f"{d.day}/{d.month}/{d.year}"))
+                    dateList.append((f"{d.year}-{d.month}-{d.day}"))
                     a = a + intervalo_parcelas
 
             else:
@@ -126,7 +126,7 @@ def parcelar(banco, cursor, totalVenda, produtos, path):
                         count = 0
                         mes = 1
                         ano += 1
-                    dateList.append((f"{dia_fixo_pagamento}/{mes+count}/{ano}"))
+                    dateList.append((f"{ano}-{mes+count}-{dia_fixo_pagamento}"))
                     count+=1
 
             for i in range(0, n_parcelas):
