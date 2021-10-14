@@ -3,7 +3,8 @@ import json
 
 def check(file, path):
     response = requests.get("https://api.github.com/repos/pedro554/funeraria/tags")
-    current_version = response.json()[-1]['name']
+    current_version = response.json()[0]['name']
+    print(current_version)
 
     f = open(file, 'r')
 
