@@ -14,7 +14,7 @@ for x in path:
     a += x + '\\'
 
 response = requests.get("https://api.github.com/repos/pedro554/funeraria/tags")
-current_version = response.json()[-1]['name']
+current_version = response.json()[0]['name']
 data = {"version": current_version}
 
 
